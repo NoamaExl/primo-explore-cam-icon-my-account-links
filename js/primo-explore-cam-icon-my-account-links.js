@@ -3,11 +3,16 @@ app.controller('PrmIconAfterController', ['$http', '$mdDialog', '$scope', functi
 
     vm.$onInit = function () {
         if (this.parentCtrl.iconDefinition === 'account-card-details') {
-            if (this.parentCtrl.$element.parent().parent().parent().hasClass('md-fab-action-item')) {
+            try {
                 angular.element(document.getElementsByTagName('md-fab-actions')[0].children[2].children[0])[0].style.display = 'none';
-            } else {
-                angular.element(document.querySelector('.settings-container')).find('button')[0].style.display = 'none';
+            }catch(err) {
             }
+            try {
+                angular.element(document.querySelector('.settings-container')).find('button')[0].style.display = 'none';
+            }catch(err){
+
+            }
+
         }
     };
 
